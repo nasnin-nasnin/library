@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Library Management System</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(135deg, #000000, #00e1ff, #000000);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Poppins", sans-serif;
+      color: #fff;
+    }
+    .navbar {
+      background-color: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+    }
+    .navbar a {
+      color: white !important;
+      font-weight: 500;
+    }
+    .card {
+      border: none;
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+    .book-card {
+      border-radius: 12px;
+      transition: transform 0.3s;
+    }
+    .book-card:hover {
+      transform: scale(1.03);
+    }
+  </style>
+</head>
+<body>
+
+<!-- 🔹 Navigation Bar -->
+<nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container-fluid px-5">
+    <a class="navbar-brand fw-bold text-white" href="#"> BookLand📚 </a>
+    <div class="d-flex">
+      <a href="{% url 'login' %}" class="btn btn-outline-light me-2">Login</a>
+      <a href="{% url 'register' %}" class="btn btn-outline-light me-2">Register</a>
+    </div>
+  </div>
+</nav>
+
+<!-- 🔹 Main Content -->
+<div class="container text-center py-5 mt-5">
+  <div class="card p-5 bg-white text-dark mt-5">
+    <h1 class="mb-3">📚 Welcome to the BookLand📚</h1>
+    <p class="lead mb-4">Pick Your Books</p>
+
+    <!-- ✅ Total Books -->
+    <div class="alert alert-info fw-bold fs-5">
+      Total Books in Library: {{ total_books }}
+    </div>
+
+    <!-- 🆕 Recently Added Books -->
+    <h4 class="mt-4 mb-3 text-primary">🆕 Recents</h4>
+
+    {% if recent_books %}
+      <div class="row justify-content-center">
+        {% for book in recent_books %}
+        <div class="col-md-4 mb-3">
+          <div class="card book-card h-100 shadow-sm border-0">
+            <div class="card-body">
+              <h5 class="card-title">{{ book.title }}</h5>
+              <p class="card-text text-muted">by {{ book.author }}</p>
+              <p class="small">📅 {{ book.publication_year }} | 📘 ISBN: {{ book.isbn }}</p>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p>No books added yet.</p>
+    {% endif %}
+
+    <!-- 📖 Go to Library Button -->
+    <div class="mt-4">
+      <a href="{% url 'login' %}" class="btn btn-primary btn-lg px-4">Go to Book List</a>
+    </div>
+  </div>
+</div>
+</body>
+</html>

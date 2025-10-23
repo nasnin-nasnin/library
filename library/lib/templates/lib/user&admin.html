@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>📚 BookLand - Home</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    /* 🌈 Animated Gradient Background */
+    body {
+      background: linear-gradient(120deg, #007bff, #6f42c1, #20c997);
+      background-size: 300% 300%;
+      animation: gradientShift 8s ease infinite;
+      min-height: 100vh;
+      font-family: "Poppins", sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* 📘 Card Container */
+    .card-container {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(12px);
+      border-radius: 25px;
+      padding: 50px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+      max-width: 700px;
+      width: 90%;
+      animation: fadeUp 1s ease;
+    }
+
+    @keyframes fadeUp {
+      from { transform: translateY(40px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    h1 {
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    p {
+      color: #f0f0f0;
+      margin-bottom: 30px;
+    }
+
+    /* 🧑‍💻 Buttons */
+    .role-btn {
+      border: none;
+      border-radius: 20px;
+      padding: 15px 30px;
+      font-size: 1.1rem;
+      font-weight: 500;
+      width: 220px;
+      transition: all 0.3s ease;
+      color: #fff;
+    }
+
+    .role-btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 20px rgba(255, 255, 255, 0.3);
+    }
+
+    .user-btn {
+      background: linear-gradient(45deg, #007bff, #00bcd4);
+    }
+
+    .admin-btn {
+      background: linear-gradient(45deg, #6f42c1, #d63384);
+    }
+
+    /* 🖼️ Icons */
+    .icon {
+      font-size: 60px;
+      margin-bottom: 10px;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* 🧭 Responsive */
+    @media (max-width: 768px) {
+      .d-flex {
+        flex-direction: column !important;
+        gap: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card-container text-center">
+    <h1>📚 Welcome to <span class="text-warning">BookLand</span></h1>
+    <p>Choose your portal to continue</p>
+
+    <div class="d-flex justify-content-center gap-4 mt-4">
+      <!-- 👤 User Card -->
+      <div>
+        <div class="icon">👤</div>
+        <a href="{% url 'login' %}" class="btn role-btn user-btn">User Login</a>
+      </div>
+
+      <!-- 🧑‍💼 Admin Card -->
+      <div>
+        <div class="icon">🧑‍💼</div>
+        <a href="{% url 'adminlogin' %}" class="btn role-btn admin-btn">Admin Login</a>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

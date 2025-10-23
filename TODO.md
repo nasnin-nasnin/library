@@ -1,0 +1,4 @@
+- [x] Fix template paths in views.py from 'library/' to 'lib/'
+- [x] Fix import in library/urls.py and add admin URL
+- [x] Run python manage.py makemigrations
+- [x] Run python manage.py migrate
